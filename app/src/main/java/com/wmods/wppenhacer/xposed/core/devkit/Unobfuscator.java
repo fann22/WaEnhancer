@@ -20,6 +20,7 @@ import com.wmods.wppenhacer.xposed.utils.Utils;
 import org.luckypray.dexkit.DexKitBridge;
 import org.luckypray.dexkit.query.FindClass;
 import org.luckypray.dexkit.query.FindMethod;
+import org.luckypray.dexkit.query.enums.OpCodeMatchType;
 import org.luckypray.dexkit.query.enums.StringMatchType;
 import org.luckypray.dexkit.query.matchers.ClassMatcher;
 import org.luckypray.dexkit.query.matchers.MethodMatcher;
@@ -964,16 +965,14 @@ public class Unobfuscator {
             var clazzData = Objects.requireNonNull(dexkit.getClassData(clazzMessage));
             var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
             if (methodData.isEmpty()) {
-                var field = clazzMessage.getDeclaredField("A02");
-                methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingField(DexSignUtil.getFieldDescriptor(field)).returnType(String.class)));
-            }
-            if (methodData.isEmpty()) {
-                var csClazzData = dexkit.findClass(FindClass.create().matcher(ClassMatcher.create().addUsingString("FMessageSystemScheduledCallStart/setData index out of bounds: "))).singleOrNull();
-                if (csClazzData != null) {
-                    var csClazz = csClazzData.getInstance(loader);
-                    var field = csClazz.getDeclaredField("A02");
-                    methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingField(DexSignUtil.getFieldDescriptor(field)).returnType(String.class)));
-                }
+                methodData = clazzData.findMethod(
+                    new FindMethod().matcher(
+                        new MethodMatcher()
+                            .returnType(String.class)
+                            .paramCount(0)
+                            .opNames(List.of("iput-object", "monitor-exit", "return-object", "move-exception", "monitor-exit", "throw"), OpCodeMatchType.EndsWith)
+                    )
+                );
             }
             if (methodData.isEmpty()) throw new RuntimeException("NewMessage method not found");
             return methodData.get(0).getMethodInstance(loader);
