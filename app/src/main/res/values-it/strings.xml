@@ -217,6 +217,13 @@
     <string name="navigation_transparency">Trasparenza barra di navigazione</string>
     <string name="show_online_last_seen_in_conversation_list">Mostra Online/Ultimo accesso nell\'elenco delle conversazioni</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Mostra un testo \'online\' o \'visto l\'ultima volta\' nella Home\n(NOTA: È necessario attivare la Visualizzazione online per tutti nel menù impostazioni Privacy di WhatsApp)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Mostra il tempo trascorso invece di data e ora</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Mostra l\'ultimo accesso nella schermata principale come tempo trascorso\nEsempio: \"Ultimo accesso 8H 2M fa\"</string>
+    <string name="last_seen_just_now">Ultimo accesso appena ora</string>
+    <string name="last_seen_day_hour">Ultimo accesso %1$dG %2$dO fa</string>
+    <string name="last_seen_hour_minute">Ultimo accesso %1$dO %2$dM fa</string>
+    <string name="last_seen_hour">Ultimo accesso %1$dO fa</string>
+    <string name="last_seen_minute">Ultimo accesso %1$dM fa</string>
     <string name="toast_online">%s è online</string>
     <string name="show_toast_on_contact_online">Mostra toast sui contatti online</string>
     <string name="show_toast_on_contact_online_sum">Mostra una notifica toast quando un contatto è online</string>

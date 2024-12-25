@@ -224,6 +224,13 @@ Harap gunakan versi WhatsApp yang didukung!</string>
     <string name="show_online_last_seen_in_conversation_list">Tampilkan \"terakhir dilihat dan online\"</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Tampilkan \"terakhir dilihat dan online\" di layar beranda
 (CATATAN: Harus mengaktifkan \"Terakhir dilihat dan online\" untuk semua orang di menu setelan privasi WhatsApp)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Tampilkan waktu berlalu alih-alih tanggal dan waktu</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Tampilkan terakhir terlihat di layar utama sebagai waktu berlalu\nContoh: \"Terakhir terlihat 8J 2M lalu\"</string>
+    <string name="last_seen_just_now">Terakhir terlihat baru saja</string>
+    <string name="last_seen_day_hour">Terakhir terlihat %1$dH %2$dJ yang lalu</string>
+    <string name="last_seen_hour_minute">Terakhir terlihat %1$dJ %2$dM yang lalu</string>
+    <string name="last_seen_hour">Terakhir terlihat %1$dJ yang lalu</string>
+    <string name="last_seen_minute">Terakhir terlihat %1$dM yang lalu</string>
     <string name="toast_online">%s online</string>
     <string name="show_toast_on_contact_online">Notifikasi Kontak Online</string>
     <string name="show_toast_on_contact_online_sum">Tampilkan notifikasi mengambang ketika kontak sedang online</string>

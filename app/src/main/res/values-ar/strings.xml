@@ -218,6 +218,13 @@
     <string name="navigation_transparency">شفافية التنقل</string>
     <string name="show_online_last_seen_in_conversation_list">إظهار متصل الآن/آخر ظهور في قائمة المحادثات</string>
     <string name="show_online_last_seen_in_conversation_list_sum">إظهار نقطة خضراء متصل الآن على الشاشة الرئيسية (ملاحظة: يجب تنشيط العرض عبر الإنترنت للجميع في قائمة إعدادات الخصوصية في واتساب)</string>
+    <string name="show_online_last_seen_as_elapsed_time">إظهار الوقت المنقضي بدلاً من التاريخ والوقت</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">إظهار آخر ظهور على الشاشة الرئيسية كوقت منقضي\nمثال: "آخر ظهور منذ 8 ساعات و2 دقيقة"</string>
+    <string name="last_seen_just_now">شوهد الآن</string>
+    <string name="last_seen_day_hour">شوهد منذ %1$d يوم و %2$d ساعة</string>
+    <string name="last_seen_hour_minute">شوهد منذ %1$d ساعة و %2$d دقيقة</string>
+    <string name="last_seen_hour">شوهد منذ %1$d ساعة</string>
+    <string name="last_seen_minute">شوهد منذ %1$d دقيقة</string>
     <string name="toast_online">%s متصل الآن</string>
     <string name="show_toast_on_contact_online">إظهار إشعار جهة الاتصال متصل الآن</string>
     <string name="show_toast_on_contact_online_sum">إظهار إشعار عندما تكون جهة اتصال على الإنترنت</string>

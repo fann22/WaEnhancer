@@ -217,6 +217,13 @@
     <string name="navigation_transparency">Navigationstransparenz</string>
     <string name="show_online_last_seen_in_conversation_list">Online/Zuletzt gesehen in der Konversationsliste anzeigen</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Zeigt einen grünen Online-Punkt auf dem Startbildschirm (NOTE: Onlineanzeige muss für jeden in den WhatsApp Privatsphäre-Einstellungen aktiviert sein)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Zeige vergangene Zeit anstelle von Datum und Uhrzeit</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Zeige die letzte Aktivität auf dem Startbildschirm als vergangene Zeit\nBeispiel: \"Zuletzt gesehen vor 8 Std. 2 Min.\"</string>
+    <string name="last_seen_just_now">Zuletzt gesehen gerade eben</string>
+    <string name="last_seen_day_hour">Zuletzt gesehen vor %1$dT %2$dStd</string>
+    <string name="last_seen_hour_minute">Zuletzt gesehen vor %1$dStd %2$dMin</string>
+    <string name="last_seen_hour">Zuletzt gesehen vor %1$dStd</string>
+    <string name="last_seen_minute">Zuletzt gesehen vor %1$dMin</string>
     <string name="toast_online">%s ist online</string>
     <string name="show_toast_on_contact_online">Nachricht bei Kontakt ist online</string>
     <string name="show_toast_on_contact_online_sum">Zeigt eine Nachricht, wenn ein Kontakt online ist</string>

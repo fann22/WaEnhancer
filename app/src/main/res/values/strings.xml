@@ -219,6 +219,13 @@
     <string name="navigation_transparency">Navigation Transparency</string>
     <string name="show_online_last_seen_in_conversation_list">Show Online/Last seen in Conversation List</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Show a text online or last seen on home screen\n(NOTE: Must activate show online for everyone in WhatsApp\'s Privacy Settings menu)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Show elapsed time instead of date and time</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Show last seen on home screen as elapsed time\nExample: \"Last seen 8H 2M ago\"</string>
+    <string name="last_seen_just_now">Last seen just now</string>
+    <string name="last_seen_day_hour">Last seen %1$dD %2$dH ago</string>
+    <string name="last_seen_hour_minute">Last seen %1$dH %2$dM ago</string>
+    <string name="last_seen_hour">Last seen %1$dH ago</string>
+    <string name="last_seen_minute">Last seen %1$dM ago</string>
     <string name="toast_online">%s is online</string>
     <string name="show_toast_on_contact_online">Show toast on contact online</string>
     <string name="show_toast_on_contact_online_sum">Show a toast when a contact is online</string>

@@ -217,6 +217,13 @@
     <string name="navigation_transparency">Gezinme Şeffaflığı</string>
     <string name="show_online_last_seen_in_conversation_list">Sohbet Listesinde Çevrimiçi/Son Görülmeyi Göster</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Ana ekranda çevrimiçi veya son görülme metni göster\n(NOT: WhatsApp\'ın Gizlilik Ayarları menüsünde herkes için çevrimiçi göstermeyi etkinleştirmelisiniz)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Tarih ve saat yerine geçen süreyi göster</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Son görülmeyi ana ekranda geçen süre olarak göster\nÖrnek: \"Son görülme 8S 2D önce\"</string>
+    <string name="last_seen_just_now">Az önce görüldü</string>
+    <string name="last_seen_day_hour">Son görülme %1$dG %2$dS önce</string>
+    <string name="last_seen_hour_minute">Son görülme %1$dS %2$dD önce</string>
+    <string name="last_seen_hour">Son görülme %1$dS önce</string>
+    <string name="last_seen_minute">Son görülme %1$dD önce</string>
     <string name="toast_online">%s çevrimiçi</string>
     <string name="show_toast_on_contact_online">Kişi çevrimiçi olduğunda bildirim göster</string>
     <string name="show_toast_on_contact_online_sum">Bir kişi çevrimiçi olduğunda bildirim göster</string>

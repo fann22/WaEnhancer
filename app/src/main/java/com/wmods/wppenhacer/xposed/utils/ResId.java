@@ -57,6 +57,11 @@ public class ResId {
         public static int deleted_status;
         public static int deleted_message;
         public static int toast_online;
+        public static int last_seen_just_now;
+        public static int last_seen_day_hour;
+        public static int last_seen_hour_minute;
+        public static int last_seen_hour;
+        public static int last_seen_minute;
         public static int message_removed_on;
         public static int loading;
         public static int delete_for_me;
