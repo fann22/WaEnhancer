@@ -23,6 +23,7 @@ import com.wmods.wppenhacer.xposed.utils.ReflectionUtils;
 import com.wmods.wppenhacer.xposed.utils.ResId;
 import com.wmods.wppenhacer.xposed.utils.Utils;
 
+import java.util.concurrent.TimeUnit;
 import java.util.Locale;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -34,6 +35,8 @@ public class ShowOnline extends Feature {
 
     private Object mStatusUser;
     private Object mInstancePresence;
+    private Object mGetJid;
+    private Object mGetDate;
 
     public ShowOnline(@NonNull ClassLoader loader, @NonNull XSharedPreferences preferences) {
         super(loader, preferences);
@@ -44,6 +47,7 @@ public class ShowOnline extends Feature {
 
         var showOnlineText = prefs.getBoolean("showonlinetext", false);
         var showOnlineIcon = prefs.getBoolean("dotonline", false);
+        var lastSeenToElapsedTime = prefs.getBoolean("lastseentoelapsedtime", false);
         if (!showOnlineText && !showOnlineIcon) return;
 
         var classViewHolder = Unobfuscator.loadViewHolder(classLoader);
@@ -113,7 +117,6 @@ public class ShowOnline extends Feature {
 
         var absViewHolderClass = Unobfuscator.loadAbsViewHolder(classLoader);
 
-
         XposedBridge.hookAllConstructors(getStatusUser.getDeclaringClass(), new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -127,6 +130,61 @@ public class ShowOnline extends Feature {
                 mInstancePresence = param.thisObject;
             }
         });
+
+        // To avoid additional load
+        if (lastSeenToElapsedTime) {
+            var getJid = Unobfuscator.loadJidGetterMethod(classLoader);
+            var getDate = Unobfuscator.loadDateMillisMethod(classLoader);
+            XposedBridge.hookAllConstructors(getJid.getDeclaringClass(), new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    mGetJid = param.thisObject;
+                }
+            });
+            XposedBridge.hookAllConstructors(getDate.getDeclaringClass(), new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    mGetDate = param.thisObject;
+                }
+            });
+            XposedBridge.hookMethod(getStatusUser, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    String result = (String) param.getResult();
+                    String finalResult = result;
+                    var object = param.args[0];
+                    var jid = ReflectionUtils.callMethod(getJid, mGetJid, object);
+                    long epoch = (Long) ReflectionUtils.callMethod(getDate, mGetDate, jid);
+                    if (epoch > 1) {
+                        long currentTime = System.currentTimeMillis();
+    
+                        long diffInMillis = currentTime - epoch;
+    
+                        long days = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+                        long hours = TimeUnit.MILLISECONDS.toHours(diffInMillis) - TimeUnit.DAYS.toHours(days);
+                        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(diffInMillis));
+    
+                        Context context = Utils.getApplication();
+                        if (minutes < 1) {
+                            finalResult = context.getString(ResId.string.last_seen_just_now);
+                        } else if (hours < 1) {
+                            finalResult = context.getString(ResId.string.last_seen_minute, minutes);
+                        } else if (days < 1) {
+                            long remainingMinutes = minutes % 60;
+                            if (remainingMinutes > 0) {
+                                finalResult = context.getString(ResId.string.last_seen_hour_minute, hours, remainingMinutes);
+                            } else {
+                                finalResult = context.getString(ResId.string.last_seen_hour, hours);
+                            }
+                        } else {
+                            long remainingHours = hours % 24;
+                            finalResult = context.getString(ResId.string.last_seen_day_hour, days, remainingHours);
+                        }
+                    }
+                    param.setResult(finalResult);
+                }
+            });
+        }
 
         XposedBridge.hookMethod(onChangeStatus, new XC_MethodHook() {
             @Override

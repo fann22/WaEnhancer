@@ -218,6 +218,13 @@
     <string name="navigation_transparency">שקיפות ניווט</string>
     <string name="show_online_last_seen_in_conversation_list">הצג מחובר/ת או נראה לאחרונה במסך הבית</string>
     <string name="show_online_last_seen_in_conversation_list_sum">הצג מחובר/ת או נראה לאחרונה במסך הבית\n(הערה: יש להפעיל את ההגדרה לכולם בתפריט הגדרות הפרטיות של ווצאפ)</string>
+    <string name="show_online_last_seen_as_elapsed_time">הצג זמן שחלף במקום תאריך ושעה</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">הצג אחרון שנראה במסך הבית כזמן שחלף\nלדוגמה: \"נראה לאחרונה לפני 8ש 2ד\"</string>
+    <string name="last_seen_just_now">נראה עכשיו</string>
+    <string name="last_seen_day_hour">נראה לפני %1$dי %2$dש</string>
+    <string name="last_seen_hour_minute">נראה לפני %1$dש %2$dד</string>
+    <string name="last_seen_hour">נראה לפני %1$dש</string>
+    <string name="last_seen_minute">נראה לפני %1$dד</string>
     <string name="toast_online">%s מחובר/ת</string>
     <string name="show_toast_on_contact_online">הצג הודעה קופצת על איש קשר מחובר/ת</string>
     <string name="show_toast_on_contact_online_sum">הצג הודעה קופצת כאשר איש קשר מחובר</string>

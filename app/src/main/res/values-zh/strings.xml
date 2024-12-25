@@ -217,6 +217,13 @@
     <string name="navigation_transparency">导航栏透明度</string>
     <string name="show_online_last_seen_in_conversation_list">在聊天列表中显示联系人的最后上线时间和在线状态文本</string>
     <string name="show_online_last_seen_in_conversation_list_sum">在主页聊天列表中显示联系人的最后上线时间和在线状态\n（注意：必须在 WhatsApp 设置的“隐私”菜单中的“最后上线时间和在线状态”中对所有人开放）</string>
+    <string name="show_online_last_seen_as_elapsed_time">显示经过的时间而不是日期和时间</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">在主屏幕显示上次在线的时间为经过时间\n例如：\“上次在线8小时2分钟之前\”</string>
+    <string name="last_seen_just_now">刚刚在线</string>
+    <string name="last_seen_day_hour">上次在线 %1$d天 %2$d小时之前</string>
+    <string name="last_seen_hour_minute">上次在线 %1$d小时 %2$d分钟之前</string>
+    <string name="last_seen_hour">上次在线 %1$d小时之前</string>
+    <string name="last_seen_minute">上次在线 %1$d分钟之前</string>
     <string name="toast_online">%s 当前在线</string>
     <string name="show_toast_on_contact_online">联系人在线时显示弹窗提示</string>
     <string name="show_toast_on_contact_online_sum">联系人在线时显示弹窗提示</string>

@@ -1758,4 +1758,45 @@ public class Unobfuscator {
             return methodData.get(0).getMethodInstance(classLoader);
         });
     }
+
+    public static Method loadJidGetterMethod(ClassLoader classLoader) throws Exception {
+        return UnobfuscatorCache.getInstance().getMethod(classLoader, () -> {
+            var method = loadStatusUserMethod(classLoader);
+            var methodData = dexkit.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                    .addCaller(DexSignUtil.getMethodDescriptor(method))
+                    .opNames(List.of(
+                        "const-class",
+                        "invoke-virtual",
+                        "move-result-object",
+                        "invoke-static",
+                        "check-cast",
+                        "return-object"
+                    ))
+                )
+            );
+            if (methodData.isEmpty())
+                throw new RuntimeException("loadJidGetterMethod method not found");
+            return methodData.get(0).getMethodInstance(classLoader);
+        });
+    }
+
+    public static Method loadDateMillisMethod(ClassLoader classLoader) throws Exception {
+        return UnobfuscatorCache.getInstance().getMethod(classLoader, () -> {
+            var method = loadStatusUserMethod(classLoader);
+            String method2 = loadJidGetterMethod(classLoader).toString().split(" ")[2];
+            var methodData = dexkit.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                    .returnType(long.class)
+                    .addParamType(method2)
+                    .addCaller(DexSignUtil.getMethodDescriptor(method))
+                )
+            );
+            if (methodData.isEmpty())
+                throw new RuntimeException("loadDateMillisMethod method not found");
+            return methodData.get(0).getMethodInstance(classLoader);
+        });
+    }
 }
