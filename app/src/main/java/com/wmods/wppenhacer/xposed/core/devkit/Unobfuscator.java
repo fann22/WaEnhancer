@@ -18,9 +18,9 @@ import com.wmods.wppenhacer.xposed.utils.ReflectionUtils;
 import com.wmods.wppenhacer.xposed.utils.Utils;
 
 import org.luckypray.dexkit.DexKitBridge;
+import org.luckypray.dexkit.query.enums.OpCodeMatchType;
 import org.luckypray.dexkit.query.FindClass;
 import org.luckypray.dexkit.query.FindMethod;
-import org.luckypray.dexkit.query.enums.OpCodeMatchType;
 import org.luckypray.dexkit.query.enums.StringMatchType;
 import org.luckypray.dexkit.query.matchers.ClassMatcher;
 import org.luckypray.dexkit.query.matchers.MethodMatcher;
@@ -541,17 +541,6 @@ public class Unobfuscator {
         return UnobfuscatorCache.getInstance().getMethod(loader, () -> {
             var id = Utils.getID("menuitem_conversations_message_contact", "id");
             var methods = dexkit.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingNumber(id)));
-            if (!methods.isEmpty() && !methods.get(0).toString().contains("onClick")) {
-                methods = dexkit.findMethod(
-                    new FindMethod().matcher(
-                        new MethodMatcher()
-                            .addUsingString("biz_block_header_chat")
-                            .addParamType(View.class)
-                            .paramCount(1)
-                            .name("onClick")
-                    )
-                );
-            }
             if (methods.isEmpty()) throw new Exception("MenuStatus method not found");
             return methods.get(0).getMethodInstance(loader);
         });
@@ -974,17 +963,14 @@ public class Unobfuscator {
         return UnobfuscatorCache.getInstance().getMethod(loader, () -> {
             var clazzMessage = loadFMessageClass(loader);
             var clazzData = Objects.requireNonNull(dexkit.getClassData(clazzMessage));
-            var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
-            if (methodData.isEmpty()) {
-                methodData = clazzData.findMethod(
-                    new FindMethod().matcher(
-                        new MethodMatcher()
-                            .returnType(String.class)
-                            .paramCount(0)
-                            .opNames(List.of("iput-object", "monitor-exit", "return-object", "move-exception", "monitor-exit", "throw"), OpCodeMatchType.EndsWith)
-                    )
-                );
-            }
+            var methodData = clazzData.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                        .returnType(String.class)
+                        .paramCount(0)
+                        .opNames(List.of("iput-object", "monitor-exit", "return-object", "move-exception", "monitor-exit", "throw"), OpCodeMatchType.EndsWith)
+                )
+            );
             if (methodData.isEmpty()) throw new RuntimeException("NewMessage method not found");
             return methodData.get(0).getMethodInstance(loader);
         });
@@ -1744,6 +1730,48 @@ public class Unobfuscator {
             var clazz = findFirstClassUsingStrings(classLoader, StringMatchType.Contains, "mFragmentId=#");
             if (clazz == null) throw new RuntimeException("Fragment class not found");
             return clazz;
+        });
+    }
+
+    public static Method loadJidGetterMethod(ClassLoader classLoader) throws Exception {
+        return UnobfuscatorCache.getInstance().getMethod(classLoader, () -> {
+            var method = loadStatusUserMethod(classLoader);
+            var methodData = dexkit.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                    //.paramCount(1)
+                    .addCaller(DexSignUtil.getMethodDescriptor(method))
+                    .opNames(List.of(
+                        "const-class",
+                        "invoke-virtual",
+                        "move-result-object",
+                        "invoke-static",
+                        "check-cast",
+                        "return-object"
+                    ))
+                )
+            );
+            if (methodData.isEmpty())
+                throw new RuntimeException("loadChatJidMethod method not found");
+            return methodData.get(0).getMethodInstance(classLoader);
+        });
+    }
+
+    public static Method loadDateMillisMethod(ClassLoader classLoader) throws Exception {
+        return UnobfuscatorCache.getInstance().getMethod(classLoader, () -> {
+            var method = loadStatusUserMethod(classLoader);
+            String method2 = loadJidGetterMethod(classLoader).toString().split(" ")[2];
+            var methodData = dexkit.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                    .returnType(long.class)
+                    .addParamType(method2)
+                    .addCaller(DexSignUtil.getMethodDescriptor(method))
+                )
+            );
+            if (methodData.isEmpty())
+                throw new RuntimeException("loadTimeMillisMethod method not found");
+            return methodData.get(0).getMethodInstance(classLoader);
         });
     }
 

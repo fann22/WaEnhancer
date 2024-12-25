@@ -217,6 +217,13 @@
     <string name="navigation_transparency">Transparencia de la Navegación</string>
     <string name="show_online_last_seen_in_conversation_list">Mostrar en línea/Última vez en la lista de conversaciones</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Mostrar un texto del En Línea o Última Vez en la pantalla de inicio\n(NOTA: Debe activar el en línea para todos en el menú de configuración de privacidad de WhatsApp)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Mostrar tiempo transcurrido en lugar de fecha y hora</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Mostrar última vez visto en la pantalla principal como tiempo transcurrido\nEjemplo: "Visto por última vez hace 8H 2M"</string>
+    <string name="last_seen_just_now">Visto por última vez ahora</string>
+    <string name="last_seen_day_hour">Visto por última vez hace %1$dD %2$dH</string>
+    <string name="last_seen_hour_minute">Visto por última vez hace %1$dH %2$dM</string>
+    <string name="last_seen_hour">Visto por última vez hace %1$dH</string>
+    <string name="last_seen_minute">Visto por última vez hace %1$dM</string>
     <string name="toast_online">%s en linea</string>
     <string name="show_toast_on_contact_online">Mostrar una notificación del contacto en línea </string>
     <string name="show_toast_on_contact_online_sum">Mostrar una notificación cuando un contacto está en linea</string>

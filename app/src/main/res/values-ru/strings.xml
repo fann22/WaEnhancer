@@ -217,6 +217,13 @@
     <string name="navigation_transparency">Прозрачность навигации</string>
     <string name="show_online_last_seen_in_conversation_list">Показать Онлайн/Последнее посещение в Переписке</string>
     <string name="show_online_last_seen_in_conversation_list_sum">Показать текст онлайн или последнее посещение на главном экране\n(ПРИМЕЧАНИЕ: необходимо активировать показ онлайн для всех в меню настроек конфиденциальности WhatsApp)</string>
+    <string name="show_online_last_seen_as_elapsed_time">Показать прошедшее время вместо даты и времени</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">Показать время последнего появления на главном экране как прошедшее время\nПример: \"Последний раз был 8Ч 2М назад\"</string>
+    <string name="last_seen_just_now">Был только что</string>
+    <string name="last_seen_day_hour">Был %1$dД %2$dЧ назад</string>
+    <string name="last_seen_hour_minute">Был %1$dЧ %2$dМ назад</string>
+    <string name="last_seen_hour">Был %1$dЧ назад</string>
+    <string name="last_seen_minute">Был %1$dМ назад</string>
     <string name="toast_online">%s в сети</string>
     <string name="show_toast_on_contact_online">Показать тост \"контакт в сети\"</string>
     <string name="show_toast_on_contact_online_sum">Показывать всплывающее уведомление, когда контакт в сети</string>
